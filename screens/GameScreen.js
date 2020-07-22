@@ -9,7 +9,7 @@ import {
   Dimensions,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { ScreenOrientation } from 'expo';
+// import { ScreenOrientation } from 'expo';
 
 import NumberContainer from '../components/NumberContainer';
 import Card from '../components/Card';
@@ -128,7 +128,7 @@ const GameScreen = props => {
     <View style={styles.screen}>
       <Text style={DefaultStyles.title}>Opponent's Guess</Text>
       <NumberContainer>{currentGuess}</NumberContainer>
-      <Card style={[...styles.buttonContainer, {marginTop: availableHeight > 600 ? 20 : 5}]}>
+      <Card style={styles.buttonContainer}>
         <MainButton onPress={nextGuessHandler.bind(this, 'lower')}>
           <Ionicons name="md-remove" size={24} color="white" />
         </MainButton>
@@ -161,7 +161,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     width: 400,
-    maxWidth: '90%'
+    maxWidth: '90%',
+    marginTop: GameScreen.availableHeight > 600 ? 20 : 5,
   },
   controls: {
     flexDirection: 'row',
